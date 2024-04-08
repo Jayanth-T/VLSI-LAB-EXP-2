@@ -7,34 +7,6 @@ APPARATUS REQUIRED:
 Xilinx 14.7
 Spartan6 FPGA
 
-**LOGIC DIAGRAM**
-
-ENCODER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/3cd1f95e-7531-4cad-9154-fdd397ac439e)
-
-
-DECODER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/45a5e6cf-bbe0-4fd5-ac84-e5ad4477483b)
-
-
-MULTIPLEXER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/427f75b2-8e67-44b9-ac45-a66651787436)
-
-
-DEMULTIPLEXER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/1c45a7fc-08ac-4f76-87f2-c084e7150557)
-
-
-MAGNITUDE COMPARATOR
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/b2fe7a05-6bf7-4dcb-8f5d-28abbf7ea8c2)
-
-
-  
 PROCEDURE:
 STEP:1  Start  the Xilinx navigator, Select and Name the New project.
 STEP:2  Select the device family, device, package and speed.       
@@ -48,13 +20,123 @@ STEP:9  In the Design Object List Window, enter the pin location for each pin in
 STEP:10 Double click on the Implement Design and double click on the Generate Programming File to create a bitstream of the design.(.v) file is converted into .bit file here.
 STEP:11  On the board, by giving required input, the LEDs starts to glow light, indicating the output.
 
-VERILOG CODE
+**LOGIC DIAGRAM**
 
-   <<< TYPE YOUR VERILOG CODE >>>
+ENCODER8to3
+![301734849-3cd1f95e-7531-4cad-9154-fdd397ac439e](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/106177371/63dce1a3-1f89-4d4a-8580-e98016689fbf)
+
+DECODER3to8
+![301735010-45a5e6cf-bbe0-4fd5-ac84-e5ad4477483b](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/106177371/a8b163ca-f5b9-4bd0-a047-f99d05ecb9de)
+
+MULTIPLEXER8to1
+![301735287-427f75b2-8e67-44b9-ac45-a66651787436](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/106177371/024f0226-009c-410a-9cc7-f9b131e992be)
+
+DEMULTIPLEXER1to8
+![301735386-1c45a7fc-08ac-4f76-87f2-c084e7150557](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/106177371/7ef36b66-b07c-45d9-94ae-c2a3b0d77316)
+
+MAGNITUDE COMPARATOR
+![301735522-b2fe7a05-6bf7-4dcb-8f5d-28abbf7ea8c2](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/106177371/10476eed-ac70-486a-986e-9cd2ecd1f6e0)
+
+
+VERILOG CODE
+# ENCODER
+module encoder(a,y);
+input [7:0]a;
+output[2:0]y;
+or(y[2],a[6],a[5],a[4],a[3]);
+or(y[1],a[6],a[5],a[2],a[1]);
+or(y[0],a[6],a[4],a[2],a[0]);
+endmodule
+
+# DECODER
+module decoder1(a,y);
+input [2:0]a;
+output[7:0]y;
+and(y[0],~a[2],~a[1],~a[0]);
+and(y[1],~a[2],~a[1],a[0]);
+and(y[2],~a[2],a[1],~a[0]);
+and(y[3],~a[2],a[1],a[0]);
+and(y[4],a[2],~a[1],~a[0]);
+and(y[5],a[2],~a[1],a[0]);
+and(y[6],a[2],a[1],~a[0]);
+and(y[7],a[2],a[1],a[0]);
+endmodule
+
+# MULTIPLEXER
+module mux(s,c,a);
+input [2:0]s;
+input [7:0]a;
+wire [7:0]w;
+output c;
+and(w[0],a[0],~s[2],~s[1],~s[0]);
+and(w[1],a[1],~s[2],~s[1],s[0]);
+and(w[2],a[2],~s[2],s[1],~s[0]);
+and(w[3],a[3],~s[2],s[1],s[0]);
+and(w[4],a[4],s[2],~s[1],~s[0]);
+and(w[5],a[5],s[2],~s[1],s[0]);
+and(w[6],a[6],s[2],s[1],~s[0]);
+and(w[7],a[7],s[2],s[1],s[0]);
+or (c,w[0],w[1],w[2],w[3],w[4],w[5],w[6],w[7]);
+endmodule
+
+# DEMULTIPLEXER
+module demux_8(s,a,y);
+input [2:0]s;
+input a;
+output [7:0]y;
+and(y[0],a,~s[2],~s[1],~s[0]);
+and(y[1],a,~s[2],~s[1],s[0]);
+and(y[2],a,~s[2],s[1],~s[0]);
+and(y[3],a,~s[2],s[1],s[0]);
+and(y[4],a,s[2],~s[1],~s[0]);
+and(y[5],a,s[2],~s[1],s[0]);
+and(y[6],a,s[2],s[1],~s[0]);
+and(y[7],a,s[2],s[1],s[0]);
+endmodule
+
+# MAGNITUDE COMPARATOR
+module comparator(a,b,eq,lt,gt);
+input [3:0] a,b;
+output reg eq,lt,gt;
+always @(a,b)
+begin
+ if (a==b)
+ begin
+  eq = 1'b1;
+  lt = 1'b0;
+  gt = 1'b0;
+ end
+ else if (a>b)
+ begin
+  eq = 1'b0;
+  lt = 1'b0;
+  gt = 1'b1;
+ end
+ else
+ begin
+  eq = 1'b0;
+  lt = 1'b1;
+  gt = 1'b0;
+ end
+end 
+endmodule
 
 OUTPUT WAVEFORM
- <<< PASTE YOUR OUTPUT WAVEFORM >>>
+# ENCODER
+![318353110-a7497d75-f686-43b8-9357-69e59e14eea1](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/106177371/7249b974-d087-46b5-8e68-c1f005faddeb)
+
+# DECODER
+![318353325-5f78d343-fc3a-4c1e-bfcf-f85bcc58a6e9](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/106177371/9c65cc43-83f4-46ed-b93b-b493e7eafb45)
+
+# MULTIPLEXER
+![318358035-5768add5-fee5-4c52-91c3-e3e3e72aa3ed](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/106177371/51ce0a35-25ac-4a26-b6c0-a69f10521162)
+
+# DEMULTIPLEXER
+![318358386-559774ba-65c5-4eeb-9d5f-452ea3b27c29](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/106177371/2a96de03-741c-4141-9d66-6426cec9ad89)
+
+# MAGNITUDE COMPARATOR
+![318358593-4a9e2670-3a8d-42fd-a755-f728c5a36b45](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/106177371/b7c3b47e-c346-4b83-ab3d-6bc7e99e76bf)
 
 RESULT
-
+simulation and synthesis ENCODER, DECODER, MULTIPLEXER, DEMULTIPLEXER, MAGNITUDE COMPARATOR using Xilinx ISE is verified.
 
