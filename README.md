@@ -20,7 +20,7 @@ STEP:9  In the Design Object List Window, enter the pin location for each pin in
 STEP:10 Double click on the Implement Design and double click on the Generate Programming File to create a bitstream of the design.(.v) file is converted into .bit file here.
 STEP:11  On the board, by giving required input, the LEDs starts to glow light, indicating the output.
 
-**LOGIC DIAGRAM**
+# LOGIC DIAGRAM
 
 # ENCODER
 ![301734849-3cd1f95e-7531-4cad-9154-fdd397ac439e](https://github.com/Jayanth-T/VLSI-LAB-EXP-2/assets/106177371/e0686f04-ab98-4b23-b0f7-7bfd04004b32)
@@ -35,7 +35,6 @@ or(y[1],a[6],a[5],a[2],a[1]);
 or(y[0],a[6],a[4],a[2],a[0]);
 endmodule
 ~~~
-
 **output**
 ![318353110-a7497d75-f686-43b8-9357-69e59e14eea1](https://github.com/Jayanth-T/VLSI-LAB-EXP-2/assets/106177371/b2cb2f7d-c92a-47ec-a900-19bd3b3b0da3)
 
@@ -58,7 +57,6 @@ and(y[6],a[2],a[1],~a[0]);
 and(y[7],a[2],a[1],a[0]);
 endmodule
 ~~~
-
 **output**
 ![318353325-5f78d343-fc3a-4c1e-bfcf-f85bcc58a6e9](https://github.com/Jayanth-T/VLSI-LAB-EXP-2/assets/106177371/6e158ab1-eca6-450b-b59e-a212e33a3e43)
 
@@ -142,8 +140,7 @@ begin
 end 
 endmodule
 ~~~
-
-output
+**output**
 ![318358593-4a9e2670-3a8d-42fd-a755-f728c5a36b45](https://github.com/Jayanth-T/VLSI-LAB-EXP-2/assets/106177371/3b0a314f-3c1d-4e68-8284-020d02ebb8ef)
 
 
