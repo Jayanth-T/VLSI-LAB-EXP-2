@@ -143,7 +143,8 @@ end
 endmodule
 ~~~
 
-**output**![318358593-4a9e2670-3a8d-42fd-a755-f728c5a36b45](https://github.com/Jayanth-T/VLSI-LAB-EXP-2/assets/106177371/3b0a314f-3c1d-4e68-8284-020d02ebb8ef)
+output
+![318358593-4a9e2670-3a8d-42fd-a755-f728c5a36b45](https://github.com/Jayanth-T/VLSI-LAB-EXP-2/assets/106177371/3b0a314f-3c1d-4e68-8284-020d02ebb8ef)
 
 
 # RESULT
