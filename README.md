@@ -19,7 +19,6 @@ STEP:8  Select Check Syntax from the Synthesize  XST Process. Double Click in th
 STEP:9  In the Design Object List Window, enter the pin location for each pin in the Loc column Select save from the File menu.
 STEP:10 Double click on the Implement Design and double click on the Generate Programming File to create a bitstream of the design.(.v) file is converted into .bit file here.
 STEP:11  On the board, by giving required input, the LEDs starts to glow light, indicating the output.
-
 **LOGIC DIAGRAM**
 ENCODER
 ![301734849-3cd1f95e-7531-4cad-9154-fdd397ac439e](https://github.com/Jayanth-T/VLSI-LAB-EXP-2/assets/106177371/e0686f04-ab98-4b23-b0f7-7bfd04004b32)
