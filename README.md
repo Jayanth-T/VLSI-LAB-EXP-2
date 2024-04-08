@@ -21,8 +21,8 @@ STEP:10 Double click on the Implement Design and double click on the Generate Pr
 STEP:11  On the board, by giving required input, the LEDs starts to glow light, indicating the output.
 
 **LOGIC DIAGRAM**
-
-ENCODER![301734849-3cd1f95e-7531-4cad-9154-fdd397ac439e](https://github.com/Jayanth-T/VLSI-LAB-EXP-2/assets/106177371/e0686f04-ab98-4b23-b0f7-7bfd04004b32)
+ENCODER
+![301734849-3cd1f95e-7531-4cad-9154-fdd397ac439e](https://github.com/Jayanth-T/VLSI-LAB-EXP-2/assets/106177371/e0686f04-ab98-4b23-b0f7-7bfd04004b32)
 
 
 
@@ -38,8 +38,6 @@ endmodule
 ~~~
 **output**
 ![318353110-a7497d75-f686-43b8-9357-69e59e14eea1](https://github.com/Jayanth-T/VLSI-LAB-EXP-2/assets/106177371/b2cb2f7d-c92a-47ec-a900-19bd3b3b0da3)
-
-
 
 
 DECODER
